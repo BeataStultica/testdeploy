@@ -3,16 +3,6 @@ var app = express();
 logger = require("morgan");
 app.use(logger());
 
-app.get("/", function (request, response) {
-  response.send("Hello World!");
-});
-
-console.log(process.env.PORT);
-var port = process.env.PORT || 5000;
-app.listen(port, function () {
-  console.log("Listening on " + port);
-});
-
 const { Pool } = require("pg");
 
 const pool = new Pool({
@@ -24,7 +14,16 @@ const pool = new Pool({
 });
 pool.connect();
 
-pool.query("SELECT * FROM testtable", function (err, result) {
+const a = pool.query("SELECT * FROM testtable", function (err, result) {
   if (err) return console.error(err);
   console.log(result);
+});
+app.get("/", function (request, response) {
+  response.send(a);
+});
+
+console.log(process.env.PORT);
+var port = process.env.PORT || 5000;
+app.listen(port, function () {
+  console.log("Listening on " + port);
 });
