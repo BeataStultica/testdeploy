@@ -25,7 +25,6 @@ const pool = new Pool({
 pool.connect();
 
 pool.query("SELECT * FROM testtable", function (err, result) {
-  done();
   if (err) return console.error(err);
   console.log(result.rows);
 });
