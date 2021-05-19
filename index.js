@@ -26,5 +26,5 @@ pool.connect();
 
 pool.query("SELECT * FROM testtable", function (err, result) {
   if (err) return console.error(err);
-  console.log(result.rows);
+  console.log(result);
 });
