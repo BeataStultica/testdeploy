@@ -13,13 +13,18 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 pool.connect();
-
+/*
 const a = pool.query("SELECT * FROM testtable", function (err, result) {
   if (err) return console.error(err);
   console.log(result);
 });
-app.get("/", function (request, response) {
-  response.send(a);
+*/
+app.get("/", async (request, response) {
+  const b = await pool.query("SELECT * FROM testtable", function (err, result) {
+    if (err) return console.error(err);
+    console.log(result);
+  });
+  response.send(b);
 });
 
 console.log(process.env.PORT);
