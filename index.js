@@ -13,7 +13,7 @@ app.listen(port, function () {
   console.log("Listening on " + port);
 });
 
-var pg = require("pg");
+const { Pool } = require("pg");
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL, //host: "ec2-54-216-185-51.eu-west-1.compute.amazonaws.com",
