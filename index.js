@@ -19,7 +19,7 @@ const a = pool.query("SELECT * FROM testtable", function (err, result) {
   console.log(result);
 });
 */
-app.get("/", async (request, response) {
+app.get("/", async (request, response) => {
   const b = await pool.query("SELECT * FROM testtable", function (err, result) {
     if (err) return console.error(err);
     console.log(result);
